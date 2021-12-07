@@ -32,5 +32,7 @@ public class HelloSender {
         jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
 
         System.out.println("Message Sent");
+
+        // throw new RuntimeException("Foo"); se executarmos essa linha, não há confirmação de recebimento e a msg é reenviada.
     }
 }
