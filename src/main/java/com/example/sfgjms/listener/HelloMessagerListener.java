@@ -10,6 +10,7 @@ import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import java.util.UUID;
@@ -42,6 +43,8 @@ public class HelloMessagerListener {
                 .message("World")
                 .build();
 
+
+        //jmsTemplate.convertAndSend((Destination) message.getHeaders().get("jms_replyTo"), "got it!"); using spring message implementation of message
         jmsTemplate.convertAndSend(message.getJMSReplyTo(), worldMessage);
         System.out.println("\nPeguei a mensagem do send and receive!!!!\n");
 
